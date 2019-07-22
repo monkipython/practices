@@ -9,21 +9,22 @@ class Home extends Component{
         token: '',
     };
 
-    updateEmail = (email) => {
-        if(email != "" && email != null){
-            this.setState(email);
-        }
+    updateEmail = (usr) => {
+            this.setState({
+                email: usr
+            });
     };
 
-    updatePassword = (password) => {
-        if(password != "" && password != null){
-            this.setState(password);
-        }
+    updatePassword = (pwd) => {
+            this.setState({
+                password: pwd
+            });
     };
 
     loginClick = () => {
         let { email, password } = this.state;
-        console.log(email + ", " + password);
+        // console.log(email + ", " + password);
+        
     }
 
     render(){
@@ -31,16 +32,18 @@ class Home extends Component{
             <div>
                 <h1>Home Page</h1>
                 <LoginForm 
-                    updateEmail={(email) => this.updateEmail(email)}
-                    updatePassword={(password) => this.updatePassword(password)}
+                    updateEmail={(e) => this.updateEmail(e.target.value)}
+                    updatePassword={(e) => this.updatePassword(e.target.value)}
                     loginClick={this.loginClick} />
             </div>
         );
     }
 }
 
-const mapStateToProps = state => {
-    token: state.token,
-};
+const mapStateToProps = state => ({
+    email: state.email,
+    password: state.password,
+    token: state.token
+});
 
-export default connect(mapStateToProps, )(Home);
+export default connect(mapStateToProps)(Home);

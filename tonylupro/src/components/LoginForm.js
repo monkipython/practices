@@ -7,11 +7,11 @@ class LoginForm extends Component{
         return (
             <div>
                 <h4>Username</h4>
-                <input type="text" name="email" placeholder="Email" onkeyup={updateEmail} />
+                <input type="text" placeholder="Email" onChange={updateEmail}/>
                 <hr/>
                 <h4>Password</h4>
-                <input type="password" name="password" placeholder="Password" onkeyup={updatePassword} />
-                <button onclick={loginClick}>Login</button>
+                <input type="password" placeholder="Password" onChange={updatePassword}/>
+                <button onClick={loginClick}>Login</button>
             </div>
         );
     }
